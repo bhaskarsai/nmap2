@@ -6,10 +6,26 @@
  */
 
 // Global variables declration.
-var infowindow = new google.maps.InfoWindow(),
-	pageControls = new NeighborhoodViewModel(),
+// Global variables declration.
+var infowindow,
+	pageControls,
 	bounds,
 	map;
+
+//Method for Google Map Check
+var globalVars = function(){
+
+	//check if google map is loaded
+	pageControls = new NeighborhoodViewModel();
+
+	//Check "google object"
+	if(typeof google == 'undefined'){
+		pageControls.mapLoadStatus("Google map is not loading");
+		return false;
+	}else{
+		infowindow = new google.maps.InfoWindow();
+	}	
+}
 
 //Create MAP View
 var InitLocation = function(lat, lng) {
