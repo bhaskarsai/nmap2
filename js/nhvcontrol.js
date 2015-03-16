@@ -68,6 +68,11 @@ var NeighborhoodViewModel = function() {
 	//Method setPlace(Selected_Place); Bounces marker, highlights list item, and opens content on clicked place.
 	this.setPlace = function(p) {
 
+		//added the following line for Mobile devices, to close the list view automatically upon clicking them
+		if (screen.width < 1024) {
+			s.showPlaces(false);
+		}
+
 		// Removes place, bounce, and content if you click the current place.
 		if (s.place() === p) {
 			if(s.places().length === 1){
